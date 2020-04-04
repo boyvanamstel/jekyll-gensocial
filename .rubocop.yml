@@ -1,0 +1,17 @@
+require: rubocop-jekyll
+inherit_gem:
+  rubocop-jekyll: .rubocop.yml
+
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - vendor/**/*
+
+Layout/LineLength:
+  Exclude:
+    - spec/**/*
+    - jekyll-copyr.gemspec
+
+Layout/BlockLength:
+  Exclude:
+    - spec/**/* 
