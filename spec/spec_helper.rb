@@ -3,15 +3,20 @@
 require "bundler/setup"
 require "jekyll-gensocial"
 
-def dest_dir
-  File.expand_path("../tmp/dest", __dir__)
+SOURCE_DIR = File.expand_path("fixtures", __dir__)
+DEST_DIR = File.expand_path("../tmp/dest", __dir__)
+
+def source_dir(*files)
+  File.join(SOURCE_DIR, *files)
 end
 
-def source_dir
-  File.expand_path("fixtures", __dir__)
+def dest_dir(*files)
+  File.join(DEST_DIR, *files)
 end
 
 CONFIG_DEFAULTS = {
+  "source"      => source_dir,
+  "destination" => dest_dir,
 }.freeze
 
 def make_post(options = {})

@@ -10,7 +10,7 @@ module Jekyll
         it "should create text layer config" do
           pending "this needs to be implemented"
         end
-        it "should write corrent image" do
+        it "should write correct image" do
           pending "this needs to be implemented"
         end
       end
