@@ -19,6 +19,12 @@ First install ImageMagick (and GhostScript if you don't supply your own font):
 brew install pkg-config imagemagick [gs]
 ```
 
+#### Linux and Windows
+
+_Haven't tried yet. If you have, please submit a PR._
+
+### Jekyll
+
 Add `gem "jekyll-gensocial"` to the `:jekyll_plugins` group in your `Gemfile`:
 
 ```ruby
@@ -28,12 +34,6 @@ group :jekyll_plugins do
   gem "jekyll-gensocial"
 end
 ```
-
-#### Linux and Windows
-
-_Haven't tried yet. If you have, please submit a PR._
-
-### Jekyll
 
 Add these lines to your site's `_config.yml`:
 
@@ -49,9 +49,9 @@ plugins:
 You can customize the image's background layer and text appearance from your `_config.yml`.
 
 ```yaml
-# These are the default settings
+# _config.yml
 
-jekyll-gensocial:
+jekyll-gensocial:     # These are the default settings
   enabled: true       # Disables the output
   size:               # The size of the overall canvas
     width: 1920
@@ -117,7 +117,7 @@ The contents of your post goes here.
 ### Example
 
 ```yaml
-# Features a background image, text fill color and custom font
+# _config.yml
 
 jekyll-gensocial:
   background:
@@ -147,7 +147,9 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/boyvan
 
 ### Stuff to work on
 
-* Expand testing to verify image output.
+-[ ] Expand testing to verify generated images.
+-[ ] Add support for setting a background color (instead of just an image).
+-[ ] Don't overwrite existing images per default.
 
 ## License
 
