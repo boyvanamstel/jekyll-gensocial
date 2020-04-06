@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.version      = Jekyll::Gensocial::VERSION
   spec.authors      = ["Boy van Amstel"]
 
-  spec.summary      = "A plugin for Jekyll to easily generate sharable images."
-  spec.homepage     = "https://www.github.com/dangercove/jekyll-gensocial"
+  spec.summary      = "A plugin for Jekyll to easily generate sharable images for your posts."
+  spec.homepage     = "https://www.github.com/boyvanamstel/jekyll-gensocial"
   spec.license      = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -23,12 +23,12 @@ Gem::Specification.new do |spec|
       "public gem pushes."
   end
 
-  spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r!^(test|spec|features)/!) }
-  end
+  spec.files         = Dir.glob("{bin,lib}/**/*") + %w(LICENSE README.md)
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r!^exe/!) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+
+  spec.required_ruby_version = ">= 2.7"
 
   spec.add_dependency "jekyll", ">= 3.3", "< 5.0"
   spec.add_dependency "rmagick", "~> 4.1.1"
