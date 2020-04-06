@@ -3,8 +3,8 @@
 module Jekyll
   module Gensocial
     module Geometry
-      Size = Struct.new(:width, :height, keyword_init: true)
-      Point = Struct.new(:x, :y, keyword_init: true)
+      Size = Struct.new(:width, :height, :keyword_init => true)
+      Point = Struct.new(:x, :y, :keyword_init => true)
 
       class Rect
         attr_reader :size, :origin

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'rmagick'
-include Magick
+require "rmagick"
 
 module Jekyll
   module Gensocial
     module ImageCreator
       class Composer
+        include Magick
         attr_reader :image
 
         def initialize(image_size:)
@@ -28,13 +28,13 @@ module Jekyll
           origin = config.rect.origin
           size = config.rect.size
 
-          text_layer = Magick::Image.read("caption:#{text}") {
+          text_layer = Magick::Image.read("caption:#{text}") do
             self.fill = config.fill
             self.font = config.font_path unless config.font_path.nil?
             self.pointsize = config.pointsize
             self.size = "#{size.width}x#{size.height}"
             self.background_color = "none"
-          }.first
+          end.first
 
           @image.composite!(text_layer, NorthWestGravity, origin.x, origin.y, OverCompositeOp)
         end
