@@ -11,7 +11,7 @@ _^ Here's an example._
 
 ### Dependencies
 
-First install Imagemagick (and GhostScript if you don't supply your own font):
+First install ImageMagick (and GhostScript if you don't supply your own font):
 
 #### macOS
 
@@ -35,7 +35,7 @@ _Haven't tried yet. If you have, please submit a PR._
 
 ### Jekyll
 
-Add these lines to your application's `_config.yml`:
+Add these lines to your site's `_config.yml`:
 
 ```yml
 # _config.yml
@@ -72,10 +72,10 @@ jekyll-gensocial:
         y: 100
 ```
 
-Then set the `image` front matter in the posts and pages that you want to generate images for.
+Set the `image` front matter in the posts and pages that you want to generate images for.
 
 ```yaml
-# Contents of _posts/2020-03-19-macdevsclub.md
+# _posts/2020-03-19-macdevsclub.md
 
 ---
 layout: post
@@ -85,7 +85,7 @@ categories: [swift-ui]
 image: assets/img/macdevsclub.jpg
 ---
 
-The content of your post goes here.
+The contents of your post goes here.
 ```
 
 ### Overrides
@@ -93,7 +93,7 @@ The content of your post goes here.
 You can override the default settings on a per post/page basis.
 
 ```yaml
-# Contents of _posts/2020-03-19-macdevsclub.md
+# _posts/2020-03-19-macdevsclub.md
 
 ---
 layout: post
@@ -107,7 +107,7 @@ jekyll-gensocial:
     fill: "#ff0000" # And make it red
 ---
 
-The content of your post goes here.
+The contents of your post goes here.
 ```
 
 ### Example
