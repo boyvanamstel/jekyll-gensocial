@@ -147,9 +147,9 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/boyvan
 
 ### Stuff to work on
 
--[ ] Expand testing to verify generated images.
--[ ] Add support for setting a background color (instead of just an image).
--[ ] Don't overwrite existing images per default.
+- [ ] Expand testing to verify generated images.
+- [ ] Add support for setting a background color (instead of just an image).
+- [ ] Don't overwrite existing images per default.
 
 ## License
 
