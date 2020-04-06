@@ -17,7 +17,9 @@ module Jekyll
         def add_bg_layer(config:)
           return if config.path.nil?
 
-          bg_layer = Image.read(config.path).first
+          bg_layer = Image.read(config.path)
+            .first
+            .resize_to_fill(@image_size.width, @image_size.height)
 
           @image.composite!(bg_layer, CenterGravity, OverCompositeOp)
         end
