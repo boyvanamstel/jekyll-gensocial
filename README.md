@@ -52,18 +52,18 @@ You can customize the image's background layer and text appearance from your `_c
 # These are the default settings
 
 jekyll-gensocial:
-  enabled: true
-  size:
+  enabled: true       # Disables the output
+  size:               # The size of the overall canvas
     width: 1920
     height: 1080
-  background:
+  background:         # The background image
     path: nil
   text:
-    string: nil
-    font_path: nil
-    pointsize: 100
-    fill: "#000000"
-    rect:
+    string: nil       # Overrides the post/page title
+    font_path: nil    # Path to your custom font
+    pointsize: 100    # Font size
+    fill: "#000000"   # Font color
+    rect:             # Text will appear inside this frame
       size:
         width: 1600
         height: 500
@@ -87,6 +87,10 @@ image: assets/img/macdevsclub.jpg
 
 The contents of your post goes here.
 ```
+
+After building the site, an image will appear in `[your site's source]/assets/img/macdevsclub.jpg`.
+
+The plugin generates images in the source directory per default. This enables post-processors to minify and optimize the files if needed.
 
 ### Overrides
 
@@ -137,13 +141,13 @@ After checking out the repo, run `script/bootstrap` to install dependencies. The
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `lib/jekyll-gensocial/version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-### Stuff to work on
-
-* Expand testing to verify image output.
-
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/boyvanamstel/jekyll-gensocial. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to behave appropriately.
+
+### Stuff to work on
+
+* Expand testing to verify image output.
 
 ## License
 
