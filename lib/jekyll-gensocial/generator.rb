@@ -23,6 +23,9 @@ module Jekyll
       def process_docs(docs, site:, config:)
         docs.each do |doc|
           doc_config = Utils.deep_merge_hashes(config, doc.data.fetch("jekyll-gensocial", {}))
+
+          next if doc.data["image"].nil? || File.exist?(site.in_source_dir(doc.data["image"]))
+
           process_doc(doc, :site => site, :config => doc_config)
         end
       end
@@ -47,7 +50,7 @@ module Jekyll
         text = doc.data["title"] || image_config[:text].string
         image_path = doc.data["image"]
 
-        return if text.nil? || image_path.nil?
+        return if text.nil? || text.empty?
 
         write_image(
           :path         => site.in_source_dir(image_path),

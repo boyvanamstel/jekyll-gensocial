@@ -17,12 +17,17 @@ module Jekyll
       end
 
       context "when enabled" do
-        it "should have created images" do
+        it "should have created images that meet requirements" do
           make_site({ "jekyll-gensocial" => { "enabled" => true } }).process
 
-          ["post.jpg", "other-post.jpg", "no-title.jpg"].each do |file|
+          ["post.jpg", "other-post.jpg"].each do |file|
             expect(File.exist?(dest_dir("assets", "img", file))).to be_truthy
           end
+        end
+        it "should not have created images without title" do
+          make_site({ "jekyll-gensocial" => { "enabled" => true } }).process
+
+          expect(File.exist?(dest_dir("assets", "img", "no-title.jpg"))).to be_falsy
         end
       end
 
