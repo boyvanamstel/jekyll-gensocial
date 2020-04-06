@@ -6,10 +6,10 @@ A Jekyll plugin that automatically generates images that can be used to share on
 
 ## Installation
 
-First install Imagemagick and GhostScript (for fonts):
+First install Imagemagick (and GhostScript if don't supply your own font):
 
 ```bash
-brew install pkg-config imagemagick gs
+brew install pkg-config imagemagick [gs]
 ```
 
 Add `gem "jekyll-gensocial"` to the `:jekyll_plugins` group in your `Gemfile`:
@@ -33,6 +33,8 @@ plugins:
 
 ## Usage
 
+
+
 ## Purpose
 
 ## Development
@@ -40,6 +42,10 @@ plugins:
 After checking out the repo, run `script/bootstrap` to install dependencies. Then, run `bundle exec rake spec` to run the tests.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `lib/jekyll-gensocial/version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+### Requests
+
+* Expand testing to verify image output.
 
 ## Contributing
 

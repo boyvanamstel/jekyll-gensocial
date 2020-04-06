@@ -7,7 +7,9 @@ module Jekyll
       priority :lowest
 
       def generate(site)
-        config = Utils.deep_merge_hashes(Gensocial::DEFAULTS, site.config.fetch("jekyll_gensocial", {}))
+        config = Utils.deep_merge_hashes(Gensocial::DEFAULTS, site.config.fetch("jekyll-gensocial", {}))
+
+        return unless config["enabled"] == true
 
         process_docs(site.pages, site: site, config: config)
         process_docs(site.posts.docs, site: site, config: config)
@@ -17,11 +19,11 @@ module Jekyll
 
       def process_docs(docs, site:, config:)
         docs.each do |doc|
-          doc_config = Utils.deep_merge_hashes(config, doc.data.fetch("jekyll_gensocial", {}))
+          doc_config = Utils.deep_merge_hashes(config, doc.data.fetch("jekyll-gensocial", {}))
 
           image_size = Geometry::Size.new(doc_config["size"])
-          text_config = ImageCreator::TextLayerConfig.new(doc_config["text"])
-          bg_config = ImageCreator::BackgroundLayerConfig.new(doc_config["background"])
+          text_config = ImageCreator::TextLayerConfig.new(doc_config["text"], base_path: site.source)
+          bg_config = ImageCreator::BackgroundLayerConfig.new(doc_config["background"], base_path: site.source)
 
           text = doc.data["title"] || text_config.string
           image_path = doc.data["image"]
@@ -45,19 +47,20 @@ module Jekyll
       end
 
       def write_image(path:, text:, image_size:, text_config: , bg_config:)
-        image_creator = get_image_creator(
+        image = get_image_creator(
           text: text,
           image_size: image_size,
           bg_config: bg_config,
           text_config: text_config
-        )
-        image_creator.write(path)
+        ).image
+
+        image.write(path)
       end
 
       def get_image_creator(text:, image_size:, bg_config:, text_config:)
         image_creator = ImageCreator::Composer.new(image_size: image_size)
-        image_creator.set_bg(config: bg_config)
-        image_creator.set_text(text, config: text_config)
+        image_creator.add_bg_layer(config: bg_config)
+        image_creator.add_text_layer(text, config: text_config)
 
         image_creator
       end

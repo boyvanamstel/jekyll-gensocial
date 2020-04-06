@@ -7,19 +7,22 @@ module Jekyll
   module Gensocial
     module ImageCreator
       class Composer
+        attr_reader :image
+
         def initialize(image_size:)
           @image_size = image_size
           @image = Image.new(image_size.width, image_size.height)
         end
 
-        def set_bg(config:)
+        def add_bg_layer(config:)
           return if config.path.nil?
 
           bg_layer = Image.read(config.path).first
+
           @image.composite!(bg_layer, CenterGravity, OverCompositeOp)
         end
 
-        def set_text(text, config:)
+        def add_text_layer(text, config:)
           origin = config.rect.origin
           size = config.rect.size
 
@@ -32,10 +35,6 @@ module Jekyll
           }.first
 
           @image.composite!(text_layer, NorthWestGravity, origin.x, origin.y, OverCompositeOp)
-        end
-
-        def write(output_path)
-          @image.write output_path
         end
       end
     end
