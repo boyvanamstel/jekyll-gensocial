@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jekyll-gensocial (1.0.2)
+    jekyll-gensocial (1.1.0)
       jekyll (>= 3.3, < 5.0)
       rmagick (~> 4.1.1)
 
@@ -110,4 +110,4 @@ DEPENDENCIES
   rubocop-jekyll (~> 0.11.0)
 
 BUNDLED WITH
-   2.1.2
+   2.1.4
